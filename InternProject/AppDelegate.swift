@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MoEngageSDK
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        var sdkConfig = MoEngageSDKConfig(withAppID: "YSUSKQXZSREHDMDXD0HDE7WJ")
+        
+        
+        sdkConfig.enableLogs = true
+        sdkConfig.appGroupID = "group.moengage.alphadevs.moengage"
+
+              // Separate initialization methods for Dev and Prod initializations
+              #if DEBUG
+                  MoEngage.sharedInstance.initializeDefaultTestInstance(sdkConfig, sdkState: .enabled)
+              #else
+                  MoEngage.sharedInstance.initializeDefaultLiveInstance(sdkConfig, sdkState: .enabled)
+              #endif
+        
+        MoEngageSDKMessaging.sharedInstance.registerForRemoteNotification(withCategories: nil)
+
+        
         return true
     }
 
