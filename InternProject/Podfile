@@ -1,0 +1,26 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'InternProject' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for InternProject
+
+pod 'MoEngage-iOS-SDK'
+pod 'MoEngageInbox'
+pod 'MoEngageInApp'
+pod 'MoEngageCards'
+
+
+end
+
+target "InternsNotificationService" do
+  use_frameworks!
+	pod 'MoEngageRichNotification'
+end
+
+target "InternsNotificationContent" do
+  use_frameworks!
+  pod 'MoEngageRichNotification'
+end
